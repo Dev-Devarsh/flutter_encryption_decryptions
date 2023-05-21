@@ -9,10 +9,10 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 A new Flutter plugin to enctypt and decrypt api responses and requests
                        DESC
-  s.homepage         = 'https://github.com/Dev-Devarsh/redux_tut'
+  s.homepage         = 'https://github.com/Dev-Devarsh/flutter_encryption_decryptions'
   s.license          = { :type => 'BSD', :file => '../LICENSE' }
   s.author           = { 'Dev Development' => 'dev.devarsh@gmail.com' }
-  s.source           = { :http => "https://github.com/Dev-Devarsh/redux_tut" }
+  s.source           = { :http => "https://github.com/Dev-Devarsh/flutter_encryption_decryptions" }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'RNCryptor', '~> 5.0'
