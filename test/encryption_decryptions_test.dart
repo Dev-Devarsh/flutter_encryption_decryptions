@@ -10,15 +10,13 @@ class MockEncryptionDecryptionsPlatform with MockPlatformInterfaceMixin implemen
 
   @override
   Future<String?> decryptData({required String data, required String key}) async {
-    EncryptionDecryptions encryptionDecryptionsPlugin = EncryptionDecryptions();
-    await encryptionDecryptionsPlugin.getDecryptedData(data: "AGNdfsjasfefausefhleskugfesilufg", key: "key");
+    await EncryptionDecryptions.getDecryptedData(data: "AGNdfsjasfefausefhleskugfesilufg", key: "key");
     throw UnimplementedError();
   }
 
   @override
   Future<String?> encryptData({required String data, required String key}) async {
-    EncryptionDecryptions encryptionDecryptionsPlugin = EncryptionDecryptions();
-    await encryptionDecryptionsPlugin.getEncryptedData(data: jsonEncode({"name": "dev"}), key: "key");
+    await EncryptionDecryptions.getEncryptedData(data: jsonEncode({"name": "dev"}), key: "key");
     throw UnimplementedError();
   }
 }
@@ -31,10 +29,9 @@ void main() {
   });
 
   test('getEncryptedString', () async {
-    EncryptionDecryptions encryptionDecryptionsPlugin = EncryptionDecryptions();
     MockEncryptionDecryptionsPlatform fakePlatform = MockEncryptionDecryptionsPlatform();
     EncryptionDecryptionsPlatform.instance = fakePlatform;
 
-    expect(await encryptionDecryptionsPlugin.getEncryptedData(data: jsonEncode({"name": "dev"}), key: "key"), '42');
+    expect(await EncryptionDecryptions.getEncryptedData(data: jsonEncode({"name": "dev"}), key: "key"), '42');
   });
 }
