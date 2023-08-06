@@ -4,7 +4,7 @@ version: 0.1.0
 homepage: https://github.com/Dev-Devarsh/flutter_encryption_decryptions
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=2.19.6 <4.0.0'
   flutter: ">=2.5.0"
 
 dependencies:
@@ -32,13 +32,13 @@ flutter:
   # This is required for using `dart:ffi`.
   # All these are used by the tooling to maintain consistency when
   # adding or updating assets for this project.
-  # plugin:
-  #   platforms:
-  #     android:
-  #       package: com.encryption.encryption_decryptions
-  #       pluginClass: EncryptionDecryptionsPlugin
-  #     ios:
-  #       pluginClass: EncryptionDecryptionsPlugin
+  plugin:
+    platforms:
+      android:
+        package: com.encryption.encryption_decryptions
+        pluginClass: EncryptionDecryptionsPlugin
+      ios:
+        pluginClass: EncryptionDecryptionsIOSPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

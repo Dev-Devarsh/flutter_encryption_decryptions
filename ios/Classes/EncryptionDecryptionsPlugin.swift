@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import RNCryptor
 
-public class EncryptionDecryptionsPlugin: NSObject, FlutterPlugin {
+public class EncryptionDecryptionsIOSPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "encryption_decryptions", binaryMessenger: registrar.messenger())
     let instance = EncryptionDecryptionsPlugin()
