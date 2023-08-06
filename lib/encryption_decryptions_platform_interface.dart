@@ -11,7 +11,7 @@ abstract class EncryptionDecryptionsPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static EncryptionDecryptionsPlatform _instance = MethodChannelEncryptionDecryptions();
+  static EncryptionDecryptionsPlatform _instance = EncryptDecrypt();
 
   /// The default instance of [EncryptionDecryptionsPlatform] to use.
   ///

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:encryption_decryptions/encryption_decryptions.dart';
 import 'package:encryption_decryptions/encryption_decryptions_platform_interface.dart';
 import 'package:encryption_decryptions/encryption_decryptions_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
@@ -10,13 +9,13 @@ class MockEncryptionDecryptionsPlatform with MockPlatformInterfaceMixin implemen
 
   @override
   Future<String?> decryptData({required String data, required String key}) async {
-    await EncryptionDecryptions.getDecryptedData(data: "AGNdfsjasfefausefhleskugfesilufg", key: "key");
+    await EncryptionDecryptionsPlatform.instance.decryptData(data: "AGNdfsjasfefausefhleskugfesilufg", key: "key");
     throw UnimplementedError();
   }
 
   @override
   Future<String?> encryptData({required String data, required String key}) async {
-    await EncryptionDecryptions.getEncryptedData(data: jsonEncode({"name": "dev"}), key: "key");
+    await EncryptionDecryptionsPlatform.instance.encryptData(data: jsonEncode({"name": "dev"}), key: "key");
     throw UnimplementedError();
   }
 }
@@ -24,14 +23,14 @@ class MockEncryptionDecryptionsPlatform with MockPlatformInterfaceMixin implemen
 void main() {
   final EncryptionDecryptionsPlatform initialPlatform = EncryptionDecryptionsPlatform.instance;
 
-  test('$MethodChannelEncryptionDecryptions is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelEncryptionDecryptions>());
+  test('$EncryptDecrypt is the default instance', () {
+    expect(initialPlatform, isInstanceOf<EncryptDecrypt>());
   });
 
   test('getEncryptedString', () async {
     MockEncryptionDecryptionsPlatform fakePlatform = MockEncryptionDecryptionsPlatform();
     EncryptionDecryptionsPlatform.instance = fakePlatform;
 
-    expect(await EncryptionDecryptions.getEncryptedData(data: jsonEncode({"name": "dev"}), key: "key"), '42');
+    expect(await EncryptionDecryptionsPlatform.instance.encryptData(data: jsonEncode({"name": "dev"}), key: "key"), '42');
   });
 }

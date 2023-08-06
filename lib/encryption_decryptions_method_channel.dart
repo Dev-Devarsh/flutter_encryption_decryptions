@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'encryption_decryptions_platform_interface.dart';
 
 /// An implementation of [EncryptionDecryptionsPlatform] that uses method channels.
-class MethodChannelEncryptionDecryptions implements EncryptionDecryptionsPlatform {
+class EncryptDecrypt implements EncryptionDecryptionsPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('encryption_decryptions');
