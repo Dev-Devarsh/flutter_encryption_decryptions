@@ -1,6 +1,6 @@
 name: encryption_decryptions
 description: A powerfull plugin to encrypt and decrypt api responses and requests
-version: 0.2.0
+version: 1.0.0
 homepage: https://github.com/Dev-Devarsh/flutter_encryption_decryptions
 
 environment:
@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
   flutter_test:

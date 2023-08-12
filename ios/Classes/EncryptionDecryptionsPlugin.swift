@@ -5,7 +5,7 @@ import RNCryptor
 public class EncryptionDecryptionsIOSPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "encryption_decryptions", binaryMessenger: registrar.messenger())
-    let instance = EncryptionDecryptionsPlugin()
+    let instance = EncryptionDecryptionsIOSPlugin()
           channel.setMethodCallHandler({
         (call:FlutterMethodCall,result: @escaping FlutterResult) -> Void in
           if(call.method == "ios_encrypt"){
@@ -18,7 +18,6 @@ public class EncryptionDecryptionsIOSPlugin: NSObject, FlutterPlugin {
                   result("\(ciphertext.base64EncodedString().utf8)");
               } catch {
                   result(nil)
-                  debugPrint(error.localizedDescription)
               }
 
           }
@@ -35,13 +34,11 @@ public class EncryptionDecryptionsIOSPlugin: NSObject, FlutterPlugin {
                       let dict = try JSONSerialization.jsonObject(with: decryptData, options: [.fragmentsAllowed])
                       result(dict);
                   } catch {
-                    debugPrint(error.localizedDescription)
                     result(nil)
                   }
                   
               }
               catch {
-                  debugPrint(error.localizedDescription)
                   result(nil)
               }
           };
