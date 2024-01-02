@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:encryption_decryptions/encryption_decryptio.dart';
+import 'package:encryption_decryptions/encryption_decryptions.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -22,12 +22,12 @@ class _MyAppState extends State<MyApp> {
     "hobies": ["Swimming", "football"]
   };
 
-  _encryptData({required String key, required String data}) {
-    EncryptDecrypt.encryptData(data: data, key: key);
+  _encryptData({required String key, required String data}) async {
+    return await EncryptionDecryptions().encrypt(data: data, key: key) ?? "";
   }
 
-  _decryptData({required String key, required String data}) {
-    EncryptDecrypt.decryptData(data: data, key: key);
+  _decryptData({required String key, required String data}) async {
+    return await EncryptionDecryptions().decrypt(data: data, key: key) ?? "";
   }
 
   String encryptedData = "", displayData = "";
