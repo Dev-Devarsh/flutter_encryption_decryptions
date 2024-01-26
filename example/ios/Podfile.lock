@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - rn_encrypt_decrypt (0.0.1):
+    - Flutter
+    - RNCryptor (~> 5.0)
+  - RNCryptor (5.1.0)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - rn_encrypt_decrypt (from `.symlinks/plugins/rn_encrypt_decrypt/ios`)
+
+SPEC REPOS:
+  trunk:
+    - RNCryptor
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  rn_encrypt_decrypt:
+    :path: ".symlinks/plugins/rn_encrypt_decrypt/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  rn_encrypt_decrypt: 8ba1bf4a9b3c57e9d1247bd23920425c72fc41c7
+  RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
+
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
+
+COCOAPODS: 1.11.3

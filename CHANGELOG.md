@@ -1,3 +1,3 @@
-## 1.0.2
+## 1.0.4
 
-Fix Common bugs and improve performance
+Fix Reduce ecryption time from 80ms t0 50ms
