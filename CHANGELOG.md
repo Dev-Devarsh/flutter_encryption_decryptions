@@ -1,3 +1,4 @@
-## 1.0.4
+## 1.0.5
 
-Fix Reduce ecryption time from 80ms t0 50ms
+Fix: encryption crash issues in android
+Added: troubleshoot for android with updated read me

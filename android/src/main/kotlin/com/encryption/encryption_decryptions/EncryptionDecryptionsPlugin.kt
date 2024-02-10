@@ -33,15 +33,23 @@ class EncryptionDecryptionsPlugin: FlutterPlugin, MethodCallHandler {
                 val key: String? = args!!["key"]
                 val data: String? = args!!["jsonData"]
                 val rncryptor = RNCryptorNative()
-                val encryptData = String(rncryptor.encrypt(data!!, key!!))
-                result.success(encryptData)
+                try {
+                    val encryptData = String(rncryptor.encrypt(data!!, key!!))
+                    result.success(encryptData)
+                }catch (e: Error){
+                    result.success("Error")
+                }
             } else if (call.method == "android_decrypt") {
                 val args = call.arguments() as Map<String, String>?
                 val key: String? = args!!["key"]
                 val data: String? = args!!["encryptString"]
                 val rncryptor = RNCryptorNative()
-                val decryptData = rncryptor.decrypt(data!!, key!!)
-                result.success(decryptData)
+                try {
+                    val decryptData = rncryptor.decrypt(data!!, key!!)
+                    result.success(decryptData.toString())
+                }catch (e: Error){
+                    result.success("Error")
+                }
             }
       else {
       result.notImplemented()
