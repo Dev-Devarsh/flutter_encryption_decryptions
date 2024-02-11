@@ -1,5 +1,5 @@
 
-import 'encryption_decryptions_platform_interface.dart';
+import 'platform_interface/encryption_decryptions_platform_interface.dart';
 
 class EncryptionDecryptions {
   Future<String?> encrypt({required String key, required String data}) {

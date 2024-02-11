@@ -1,6 +1,6 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'encryption_decryptions_method_channel.dart';
+import '../mobile/encryption_decryptions_method_channel.dart';
 
 abstract class EncryptionDecryptionsPlatform extends PlatformInterface {
   /// Constructs a EncryptionDecryptionsPlatform.
