@@ -1,4 +1,4 @@
-## 1.0.5
+## 2.0.0
 
-Fix: encryption crash issues in android
-Added: troubleshoot for android with updated read me
+### Added
+- Direct encryption and decryption support for various data types, removing the need for `jsonEncode` and `jsonDecode` wrapping. This improves efficiency and simplifies the process when handling different data types.

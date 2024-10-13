@@ -49,7 +49,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final String enctyptDectyptkey = "hnbTojntU7u";
   final EncryptionDecryptions _encryptionDecryptions = EncryptionDecryptions();
-  final Map<String, dynamic> mockData = {
+  final Map<dynamic, dynamic> mockData = {
     "name": "John",
     "surname": "Doe",
     "age": 22,
