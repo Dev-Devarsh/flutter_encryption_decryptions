@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.encryption.encryption_decryptions_example">
+    xmlns:tools="http://schemas.android.com/tools">
    <application
         android:label="encryption_decryptions_example"
         android:name="${applicationName}"

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:encryption_decryptions/encryption_decryptions.dart';
 import 'package:flutter/material.dart';
 
@@ -15,25 +13,33 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final String enctyptDectyptkey = "hnbTojntU7u";
   final EncryptionDecryptions _encryptionDecryptions = EncryptionDecryptions();
-  final Map<String, dynamic> mockData = {
+  Map<dynamic, dynamic> jsonData = {
     "name": "John",
-    "surname": "Doe",
+    "surname": null,
     "age": 22,
     "hobies": ["Swimming", "football"]
   };
-  final String mockPlain = "I am dev";
 
-  String encryptedPlainText = "", displayPlaint = "";
+  String stringData = "I am dev";
 
-  _encryptData({required String key, required String data}) async {
-    return await _encryptionDecryptions.encrypt(data: data, key: key) ?? "";
+  String? encryptedJson = "";
+  String? encryptedString = "";
+
+  Future<String?> encryptSring({required String key, required String data}) async {
+    return await _encryptionDecryptions.encryptSring(data: data, key: key);
   }
 
-  _decryptData({required String key, required String data}) async {
-    return await _encryptionDecryptions.decrypt(data: data, key: key) ?? "";
+  decryptString({required String key, required String data}) async {
+    return await _encryptionDecryptions.decryptString(data: data, key: key);
   }
 
-  String encryptedJsonData = "", displayJsonData = "";
+  encryptJson({required String key, required Map<dynamic, dynamic> data}) async {
+    return await _encryptionDecryptions.encryptMap(data: data, key: key);
+  }
+
+  Future<Map<dynamic, dynamic>?> decryptJson({required String key, required String data}) async {
+    return await _encryptionDecryptions.decryptMap(data: data, key: key);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +59,24 @@ class _MyAppState extends State<MyApp> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   color: Colors.grey[200]!,
+                  alignment: Alignment.topCenter,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      const Text(
+                        "Json",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 20),
                       Text(
-                        encryptedJsonData,
+                        jsonData.toString(),
                         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(height: 20),
                       const Divider(),
                       Text(
-                        displayJsonData,
+                        encryptedJson ?? "",
                         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(height: 10),
@@ -75,14 +87,16 @@ class _MyAppState extends State<MyApp> {
                           FilledButton(
                             onPressed: () async {
                               /// Encode your data into with [jsonEncode] before encrpting it
-                              encryptedJsonData = await _encryptData(key: enctyptDectyptkey, data: jsonEncode(mockData));
+                              encryptedJson = await encryptJson(key: enctyptDectyptkey, data: jsonData);
                               setState(() {});
                             },
                             child: const Text('Encrypt Json Data'),
                           ),
                           FilledButton(
                             onPressed: () async {
-                              displayJsonData = await _decryptData(key: enctyptDectyptkey, data: encryptedJsonData);
+                              if (encryptedJson == null) return;
+                              jsonData = await decryptJson(key: enctyptDectyptkey, data: encryptedJson!) ??
+                                  <String, dynamic>{};
                               setState(() {});
                             },
                             child: const Text('Decrypt Json Data'),
@@ -96,18 +110,24 @@ class _MyAppState extends State<MyApp> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   color: Colors.grey[200]!,
+                  alignment: Alignment.topCenter,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      const Text(
+                        "String",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 10),
                       Text(
-                        encryptedPlainText,
+                        stringData,
                         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 10),
                       const Divider(),
                       Text(
-                        displayPlaint,
+                        encryptedString.toString(),
                         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(height: 10),
@@ -118,14 +138,17 @@ class _MyAppState extends State<MyApp> {
                           FilledButton(
                             onPressed: () async {
                               /// Encypt plain text
-                              encryptedPlainText = await _encryptData(key: enctyptDectyptkey, data: mockPlain);
+                              encryptedString = await encryptSring(key: enctyptDectyptkey, data: stringData);
                               setState(() {});
                             },
                             child: const Text('Encrypt Plain Text'),
                           ),
                           FilledButton(
                             onPressed: () async {
-                              displayPlaint = await _decryptData(key: enctyptDectyptkey, data: encryptedPlainText);
+                              if (encryptedString == null) return;
+
+                              stringData =
+                                  await decryptString(key: enctyptDectyptkey, data: encryptedString!);
                               setState(() {});
                             },
                             child: const Text('Decrypt Plain Text'),
