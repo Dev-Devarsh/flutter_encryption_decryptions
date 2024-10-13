@@ -23,10 +23,43 @@ abstract class EncryptionDecryptionsPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> encrypt({required String key,required String data}) {
+  Future<String?> encryptString({required String key, required String data}) {
     throw UnimplementedError('encrypt() has not been implemented.');
   }
-  Future<String?> decrypt({required String key, required String data}) {
-    throw UnimplementedError('decrypt() has not been implemented.');
+
+  Future<String?> decryptString({required String key, required String data}) {
+    throw UnimplementedError('decryptString() has not been implemented.');
+  }
+
+  Future<String?> encryptMap({required String key, required Map<dynamic, dynamic> data}) {
+    throw UnimplementedError('decryptString() has not been implemented.');
+  }
+
+  Future<Map<dynamic, dynamic>?> decryptMap({required String key, required String data}) {
+    throw UnimplementedError('decryptString() has not been implemented.');
+  }
+
+  Future<String?> encryptList({required String key, required List<dynamic> data}) {
+    throw UnimplementedError('encryptList() has not been implemented.');
+  }
+
+  Future<List<dynamic>?> decryptList({required String key, required String data}) {
+    throw UnimplementedError('decryptList() has not been implemented.');
+  }
+
+  Future<String?> encryptInt({required String key, required int data}) {
+    throw UnimplementedError('encryptInt() has not been implemented.');
+  }
+
+  Future<int?> decryptInt({required String key, required String data}) {
+    throw UnimplementedError('decryptInt() has not been implemented.');
+  }
+
+  Future<String?> encryptdouble({required String key, required double data}) {
+    throw UnimplementedError('encryptdouble() has not been implemented.');
+  }
+
+  Future<double?> decryptdouble({required String key, required String data}) {
+    throw UnimplementedError('decryptdouble() has not been implemented.');
   }
 }
