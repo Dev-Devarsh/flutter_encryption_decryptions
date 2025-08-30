@@ -1,3 +1,11 @@
+## 2.2.0
+
+### 🚀 Enhancements
+* **Web Support**: Added support for web with `cryptojs`.
+* **Package Version Upgrade**: Updated package version to `2.2.0`.
+* **Flutter & Dart SDK Update**: Updated Flutter SDK requirement to `>=3.19.0`.and Dart SDK requirement to `>=3.4.0`.
+*   **iOS Platform Support**: Updated `ios/encryption_decryptions.podspec` to explicitly mention iOS 13.0 as the minimum platform version.
+
 ## 2.1.0
 
 ### 🚀 MAJOR MODERNIZATION UPDATE
@@ -56,6 +64,7 @@
 * **Flutter 3.24+ Ready**: Tested with latest Flutter stable releases
 * **Kotlin 2.x Ready**: Compatible with modern Kotlin compiler and language features
 * **Android 15 Ready**: Full support for latest Android version and APIs
+* **Web Platform Support**: Added full encryption/decryption capabilities for Flutter web applications.
 * **Release Build Ready**: Consumer ProGuard rules ensure zero crashes in production APKs
 
 #### 📦 Dependencies
@@ -68,18 +77,3 @@
 * **Zero Configuration**: Users don't need to add any ProGuard rules manually
 * **Production Ready**: Release APKs work perfectly without additional setup
 * **Reduced Support Issues**: Eliminates common "ClassNotFoundException" problems
-
-## 2.0.1
-
-### 🐛 Bug Fixes
-* Fixed Android namespace error by adding namespace declaration to build.gradle
-* Resolved "Namespace not specified" error for Android Gradle Plugin compatibility
-* Ensured compatibility with AGP 8.0+ requirements
-
-## 2.0.0
-
-### 🎉 Initial Release
-* Initial publication of encryption_decryptions Flutter plugin
-* Support for encryption and decryption of API responses and requests
-* Cross-platform support for Android and iOS
-* Fast execution using rncryptor native dependency

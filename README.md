@@ -1,334 +1,165 @@
 # encryption_decryptions
 
-A powerful Flutter plugin to encrypt and decrypt API responses and requests with modern Android development standards.
+A powerful Flutter plugin for secure encryption and decryption of API responses and requests, built with modern Android, iOS, and Web standards.
 
-## 🆕 What's New in v2.1.0
+## ✨ Features
 
-### 🚀 **MAJOR MODERNIZATION UPDATE**
-**Complete package transformation with cutting-edge Android and Flutter standards**
+- **Cross-Platform**: Supports Android, iOS, and Web.
+- **Secure Data Handling**: Encrypt and decrypt various data types (strings, maps, lists, integers, doubles).
+- **High Performance**: Leverages native rncryptor for fast execution (approx. 50ms for large data).
+- **Enhanced Security**: Generates different encrypted outputs for the same input, making data prediction difficult.
+- **Modern Development Stack**: Updated to latest Flutter, Dart, Android Gradle Plugin, Kotlin, and Java versions for optimal performance and compatibility.
 
-#### 🛠️ **Build System Revolution**
-- **Kotlin DSL Migration**: Complete conversion from Groovy (`build.gradle`) to Kotlin DSL (`build.gradle.kts`)
-  - ✅ Enhanced IDE autocomplete and IntelliSense
-  - ✅ Type-safe build configuration
-  - ✅ Better refactoring support and error detection
-- **Modern Gradle Configuration**: Updated `settings.gradle.kts` with dependency resolution management
-- **Performance Boost**: Enabled Gradle caching, parallel builds, and configuration on demand
+## 🚀 What's New in v2.2.0
 
-#### 📱 **Android Platform Modernization**
-- **Android Gradle Plugin**: `8.7.0` → `8.11.0` (latest stable)
-- **Gradle**: `8.9` → `8.14` (latest with Java 24 support)
-- **Kotlin**: `1.7.10` → `2.2.10` (latest with K2 compiler)
-- **Android SDK**: `compileSdk 33` → `35` (Android 15)
-- **Target SDK**: Updated to `35` (Android 15)
-- **Minimum SDK**: `16` → `21` (Android 5.0+, modern baseline)
-- **Java**: `8` → `17` (LTS version with performance improvements)
+This release primarily focuses on SDK compatibility and performance improvements.
 
-#### 🎯 **Flutter & Dart Advancement**
-- **Flutter SDK**: `">=2.5.0"` → `">=3.19.0"` (latest stable features)
-- **Dart SDK**: `">=2.19.6"` → `">=3.3.0"` (modern language features)
-- **Code Quality**: `flutter_lints 2.0.0` → `5.0.0` (enhanced linting rules)
+- **Latest SDKs**: Updated Flutter SDK to `>=3.19.0` and Dart SDK to `>=3.4.0`.
+- **iOS Platform**: Minimum iOS version updated to 13.0 in `ios/encryption_decryptions.podspec`.
 
-#### ⚡ **Performance & Security Enhancements**
-- **Build Performance**: 
-  - ✅ Gradle build caching enabled
-  - ✅ Parallel execution optimized
-  - ✅ Memory settings tuned for faster builds
-- **Android Optimizations**:
-  - ✅ `nonTransitiveRClass=true` for smaller APKs
-  - ✅ `nonFinalResIds=true` for better build performance
-- **Security Improvements**:
-  - ✅ Comprehensive ProGuard rules (`proguard-rules.pro`)
-  - ✅ Consumer ProGuard rules (`consumer-rules.pro`)
-  - ✅ Enhanced namespace declarations for AGP 8.0+ compatibility
-
-#### 📦 **Complete Package Ecosystem Update**
-- **Example App**: Fully modernized with same standards (compileSdk 35, Java 17, minSdk 21)
-- **Dependencies**: All packages updated to latest compatible versions
-- **Compatibility**: Full AGP 8.11.0 and Flutter 3.24+ compatibility tested
-
-#### 🔄 **Breaking Changes (Important!)**
-- **Minimum Android**: Now requires Android 5.0+ (was Android 4.1+)
-- **Minimum Flutter**: Now requires Flutter 3.19.0+ (was 2.5.0+)
-- **Development**: Now requires Java 17 for development (was Java 8)
+For detailed changes and migration steps, please refer to the [Migration Guide](#migration-guide).
 
 ## Platform Support
 
-| Android | iOS 
-| :-----: | :-:
-|   ✅    | ✅
+| Android | iOS | Web |
+| :-----: | :-: | :-: |
+| ✅      | ✅  | ✅  |
 
-## 📋 Migration Guide
+## 📋 Migration Guide (v2.1.0 to v2.2.0)
 
-### Upgrading from v2.0.x to v2.1.0
-
-#### **Automatic Benefits** ✨
-- ✅ **Namespace Error Fixed**: No more "Namespace not specified" build errors
-- ✅ **Faster Builds**: Up to 40% faster build times with Gradle 8.14 optimizations
-- ✅ **Better IDE Support**: Enhanced autocomplete and error detection with Kotlin DSL
-- ✅ **Future-Proof**: Compatible with latest Flutter and Android versions
-
-#### **Requirements Check** 🔍
+**Requirements Check** 🔍
 Before upgrading, ensure your development environment meets these requirements:
 
-1. **Java Development Kit**: Update to **Java 17** (download from [Adoptium](https://adoptium.net/))
-2. **Flutter SDK**: Update to **Flutter 3.19.0+** (run `flutter upgrade`)
-3. **Android Studio**: Update to **latest version** for optimal Kotlin DSL support
+1.  **Java Development Kit**: Update to **Java 17** (download from [Adoptium](https://adoptium.net/))
+2.  **Flutter SDK**: Update to **Flutter 3.19.0+** (run `flutter upgrade`)
+3.  **Dart SDK**: Update to **Dart 3.4.0+** (comes with Flutter 3.19.0+)
+4.  **Android Studio**: Update to **latest version** for optimal Kotlin DSL support
 
-#### **For Existing Projects** 🔧
-If you're using this plugin in existing projects, you may need to:
+**For Existing Android Projects** 🔧
+If you're using this plugin in existing Android projects, you may need to:
 
-1. **Update your app's minimum SDK** (optional but recommended):
-   ```gradle
-   android {
-       defaultConfig {
-           minSdk 21  // Was 16, now 21 for modern features
-       }
-   }
-   ```
+1.  **Update your app's minimum SDK** (optional but recommended):
+    ```gradle
+    android {
+        defaultConfig {
+            minSdk 21  // Was 16, now 21 for modern features
+        }
+    }
+    ```
+2.  **Update your project's Gradle** (if experiencing build issues):
+    ```gradle
+    // In android/gradle/wrapper/gradle-wrapper.properties
+    distributionUrl=https\\://services.gradle.org/distributions/gradle-8.14-all.zip
+    ```
+3.  **AndroidManifest.xml Update**: If you encounter build issues with label conflicts, add the following:
+    -   Add `tools:replace="android:label"` inside your `<application>` tag.
+    -   Add `xmlns:tools="http://schemas.android.com/tools"` to your `<manifest>` tag.
 
-2. **Update your project's Gradle** (if experiencing build issues):
-   ```gradle
-   // In android/gradle/wrapper/gradle-wrapper.properties
-   distributionUrl=https\://services.gradle.org/distributions/gradle-8.14-all.zip
-   ```
+![Android Manifest Update](https://raw.githubusercontent.com/Dev-Devarsh/flutter_encryption_decryptions/web_crypto_js/docs/assets/android_manifest_update.png)
 
-#### **No Code Changes Required** ✅
-- Your existing encryption/decryption code remains **100% compatible**
-- All API methods work exactly the same
-- No changes needed in your Flutter/Dart code
+**No Code Changes Required** ✅
+Your existing encryption/decryption code remains **100% compatible**. All API methods work exactly the same; no changes are needed in your Flutter/Dart code.
 
-## Requirements
+## ⚠️ Important Notes
 
-### 🤖 Android
-- **Minimum**: Android 5.0 (API level 21) - _previously API 16_
-- **Target**: Android 15 (API level 35)
-- **Java**: Version 17 - _previously Java 8_
-- **Gradle**: 8.14+ - _previously 8.9_
-- **Android Gradle Plugin**: 8.11.0+ - _previously 8.7.0_
-
-### 🐦 Flutter
-- **Minimum**: Flutter 3.19.0 - _previously 2.5.0_
-- **Dart**: 3.3.0+ - _previously 2.19.6_
-
-### 💻 Development Environment
-- **Java JDK**: 17+ (required for Gradle 8.14)
-- **Android Studio**: 2023.3+ (recommended for Kotlin DSL support)
-- **IntelliJ IDEA**: 2023.3+ (if using IntelliJ)
-
-## ⚠️ Important Setup Notes
-
-### For Android Apps
-If you encounter build issues with label conflicts, add the following to your `android/app/src/main/AndroidManifest.xml`:
-
-- Add `tools:replace="android:label"` inside your `<application>` tag
-- Add `xmlns:tools="http://schemas.android.com/tools"` to your `<manifest>` tag
-
-### Data Requirements
-Ensure that requests you are encrypting and responses you are decrypting do not contain null values.
-
-> **Note**
->
-> Ensure that requests you are going to encrypt should not conatain any null value or resposne that you are going to decrypt should not have null values
-
-
-### Heighlight
-
-> Used rncryptor native dependency for fast execuation
-> Took only **50ms** to encrypt or decrypt large data
-
-> Every time you encrypt the same data you got different output so it's very hard to predict what is the information
+-   **Data Integrity**: Ensure that data (maps/lists) you are encrypting or decrypting does not contain `null` values. This plugin does not handle `null` values in complex data structures, which may lead to unexpected behavior.
 
 ## Usage
 
+Add the plugin to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  encryption_decryptions: ^2.2.0
+```
+
+Then, run `flutter pub get`.
+
+Here's an example of how to use the plugin:
+
 ```dart
 import 'dart:convert';
-
 import 'package:encryption_decryptions/encryption_decryptions.dart';
-import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  final EncryptionDecryptions encryptionDecryptions = EncryptionDecryptions();
+  final String encryptionKey = "hnbTojntU7u";
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  // Example with String data
+  String plainString = "Hello, secure world!";
+  print('Original String: $plainString');
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
+  String? encryptedString = await encryptionDecryptions.encryptSring(
+    data: plainString,
+    key: encryptionKey,
+  );
+  print('Encrypted String: $encryptedString');
 
-class _MyAppState extends State<MyApp> {
-  final String enctyptDectyptkey = "hnbTojntU7u";
-  final EncryptionDecryptions _encryptionDecryptions = EncryptionDecryptions();
-  final Map<dynamic, dynamic> mockData = {
-    "name": "John",
-    "surname": "Doe",
-    "age": 22,
-    "hobies": ["Swimming", "football"]
+  String? decryptedString = await encryptionDecryptions.decryptString(
+    data: encryptedString!,
+    key: encryptionKey,
+  );
+  print('Decrypted String: $decryptedString');
+
+  // Example with Map data
+  Map<String, dynamic> plainMap = {
+    "user": "Alice",
+    "email": "alice@example.com",
+    "age": 30,
+    "isActive": true,
   };
-  final String mockPlain = "I am dev";
+  print('\\nOriginal Map: \$plainMap');
 
-  String encryptedPlainText = "", displayPlaint = "";
+  // Encode your map to JSON string before encrypting
+  String jsonString = jsonEncode(plainMap);
+  String? encryptedMapString = await encryptionDecryptions.encryptSring(
+    data: jsonString, // Encrypt the JSON string
+    key: encryptionKey,
+  );
+  print('Encrypted Map String: \$encryptedMapString');
 
-  _encryptData({required String key, required String data}) async {
-    return await _encryptionDecryptions.encrypt(data: data, key: key) ?? "";
-  }
+  // Decrypt the string and then decode back to Map
+  String? decryptedMapString = await encryptionDecryptions.decryptString(
+    data: encryptedMapString!,
+    key: encryptionKey,
+  );
+  Map<String, dynamic> decryptedMap = jsonDecode(decryptedMapString!);
+  print('Decrypted Map: \$decryptedMap');
 
-  _decryptData({required String key, required String data}) async {
-    return await _encryptionDecryptions.decrypt(data: data, key: key) ?? "";
-  }
+  // Alternatively, use encryptMap and decryptMap directly for Map data
+  // NOTE: For Web platform, you might still need to handle JSON encoding/decoding manually
+  // for complex objects when using JavaScript interop.
+  String? encryptedComplexMap = await encryptionDecryptions.encryptMap(
+    data: plainMap,
+    key: encryptionKey,
+  );
+  print('Encrypted Complex Map String: \$encryptedComplexMap');
 
-  String encryptedJsonData = "", displayJsonData = "";
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Enctypt Decrypt',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Secure App'),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.grey[200]!,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        encryptedJsonData,
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                      ),
-                      const SizedBox(height: 20),
-                      const Divider(),
-                      Text(
-                        displayJsonData,
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          FilledButton(
-                            onPressed: () async {
-                              /// Encode your data into with [jsonEncode] before encrpting it
-                              encryptedJsonData = await _encryptData(key: enctyptDectyptkey, data: jsonEncode(mockData));
-                              setState(() {});
-                            },
-                            child: const Text('Encrypt Json Data'),
-                          ),
-                          FilledButton(
-                            onPressed: () async {
-                              displayJsonData = await _decryptData(key: enctyptDectyptkey, data: encryptedJsonData);
-                              setState(() {});
-                            },
-                            child: const Text('Decrypt Json Data'),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 50),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.grey[200]!,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        encryptedPlainText,
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                      ),
-                      const SizedBox(height: 20),
-                      const Divider(),
-                      Text(
-                        displayPlaint,
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          FilledButton(
-                            onPressed: () async {
-                              /// Encypt plain text
-                              encryptedPlainText = await _encryptData(key: enctyptDectyptkey, data: mockPlain);
-                              setState(() {});
-                            },
-                            child: const Text('Encrypt Plain Text'),
-                          ),
-                          FilledButton(
-                            onPressed: () async {
-                              displayPlaint = await _decryptData(key: enctyptDectyptkey, data: encryptedPlainText);
-                              setState(() {});
-                            },
-                            child: const Text('Decrypt Plain Text'),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  Map<dynamic, dynamic>? decryptedComplexMap = await encryptionDecryptions.decryptMap(
+    data: encryptedComplexMap!,
+    key: encryptionKey,
+  );
+  print('Decrypted Complex Map: \$decryptedComplexMap');
 }
 ```
 
-## 🚀 Performance & Benefits
+## 📊 Version Comparison (v2.1.0 vs v2.2.0)
 
-### Build Performance Improvements
-- **40% Faster Builds**: Gradle 8.14 with caching and parallel execution
-- **Optimized Memory Usage**: Tuned JVM arguments for better resource utilization
-- **Incremental Builds**: Smart dependency analysis reduces rebuild times
-- **Modern Caching**: Build cache enabled for faster subsequent builds
-
-### Development Experience Enhancements
-- **Enhanced IDE Support**: Kotlin DSL provides superior autocomplete and navigation
-- **Type Safety**: Compile-time error detection for build configurations
-- **Better Debugging**: Improved stack traces and error reporting
-- **Modern Toolchain**: Latest Android and Flutter tooling integration
-
-### Runtime Performance
-- **Optimized APK Size**: `nonTransitiveRClass` reduces final APK size
-- **Faster Resource Access**: `nonFinalResIds` improves resource loading
-- **Enhanced Security**: Modern ProGuard rules for better code protection
-- **Native Performance**: Maintained fast rncryptor native library (50ms encryption/decryption)
-
-### Future-Proofing Benefits
-- ✅ **Android 15 Ready**: Full support for latest Android features
-- ✅ **Flutter 3.24+ Compatible**: Ready for upcoming Flutter releases
-- ✅ **Kotlin 2.x Ready**: Compatible with modern Kotlin compiler features
-- ✅ **AGP 8.11+ Compatible**: Latest Android Gradle Plugin support
-
-## 📊 Version Comparison
-
-| Feature | v2.0.1 (Old) | v2.1.0 (New) | Improvement |
-|---------|--------------|--------------|-------------|
-| **Build System** | Groovy | Kotlin DSL | ✅ Type-safe, better IDE support |
-| **Android Gradle Plugin** | 8.7.0 | 8.11.0 | ✅ Latest features & performance |
-| **Gradle** | 8.9 | 8.14 | ✅ 40% faster builds |
-| **Kotlin** | 1.7.10 | 2.2.10 | ✅ K2 compiler, modern features |
-| **Compile SDK** | 33 | 35 | ✅ Android 15 support |
-| **Min SDK** | 16 | 21 | ✅ Modern baseline, better performance |
-| **Java** | 8 | 17 | ✅ LTS version, enhanced performance |
-| **Flutter** | 2.5.0+ | 3.19.0+ | ✅ Latest stable features |
-| **Build Speed** | Baseline | +40% faster | ✅ Optimizations enabled |
-| **IDE Experience** | Good | Excellent | ✅ Kotlin DSL benefits |
+| Feature                 | v2.1.0 (Old)           | v2.2.0 (New)                 | Improvement                     |
+| :---------------------- | :--------------------- | :--------------------------- | :------------------------------ |
+| **Build System**        | Kotlin DSL             | Kotlin DSL                   | ✅ Continued stability           |
+| **Android Gradle Plugin** | 8.11.0                 | 8.11.0                       | ✅ Maintained latest             |
+| **Gradle**              | 8.14                   | 8.14                         | ✅ Maintained latest             |
+| **Kotlin**              | 2.2.10                 | 2.2.10                       | ✅ Maintained latest             |
+| **Compile SDK**         | 36                     | 36                           | ✅ Android 16 support           |
+| **Min SDK**             | 21                     | 21                           | ✅ Modern baseline               |
+| **Java**                | 17                     | 17                           | ✅ LTS version                   |
+| **Flutter**             | 3.19.0+                | 3.19.0+                      | ✅ Latest stable features       |
+| **Dart**                | 3.3.0+                 | 3.4.0+                       | ✅ Latest language features     |
+| **iOS Min Version**     | Implicit (older)       | 13.0                         | ✅ Clear iOS 13.0 baseline      |
+| **Web Support**         | ✅                     | ✅                           | ✅ Maintained                    |
+| **Build Speed**         | +40% faster            | +40% faster                  | ✅ Optimizations maintained      |
+| **IDE Experience**      | Excellent              | Excellent                    | ✅ Kotlin DSL benefits          |
 
 ## 📝 License
 
@@ -340,9 +171,15 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📞 Support
 
-- **GitHub Issues**: [Report bugs or request features](https://github.com/Dev-Devarsh/flutter_encryption_decryptions/issues)
-- **Homepage**: [Package Homepage](https://github.com/Dev-Devarsh/flutter_encryption_decryptions)
-- **pub.dev**: [Package on pub.dev](https://pub.dev/packages/encryption_decryptions)
+-   **GitHub Issues**: [Report bugs or request features](https://github.com/Dev-Devarsh/flutter_encryption_decryptions/issues)
+-   **Homepage**: [Package Homepage](https://github.com/Dev-Devarsh/flutter_encryption_decryptions)
+-   **pub.dev**: [Package on pub.dev](https://pub.dev/packages/encryption_decryptions)
+
+## ☕ Support My Work
+
+If you find this plugin helpful and would like to support my work, you can buy me a coffee! Your support helps me to continue developing and maintaining useful Flutter packages.
+
+<a href="https://www.buymeacoffee.com/devarsh.panchal" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 ---
 
