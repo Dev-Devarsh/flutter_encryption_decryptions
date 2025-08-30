@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final String enctyptDectyptkey = "hnbTojntU7u";
+  final String encryptDecryptKey = "hnbTojntU7u";
   final EncryptionDecryptions _encryptionDecryptions = EncryptionDecryptions();
   Map<dynamic, dynamic> jsonData = {
     "name": "John",
@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
                           FilledButton(
                             onPressed: () async {
                               /// Encode your data into with [jsonEncode] before encrpting it
-                              encryptedJson = await encryptJson(key: enctyptDectyptkey, data: jsonData);
+                              encryptedJson = await encryptJson(key: encryptDecryptKey, data: jsonData);
                               setState(() {});
                             },
                             child: const Text('Encrypt Json Data'),
@@ -95,7 +95,7 @@ class _MyAppState extends State<MyApp> {
                           FilledButton(
                             onPressed: () async {
                               if (encryptedJson == null) return;
-                              jsonData = await decryptJson(key: enctyptDectyptkey, data: encryptedJson!) ??
+                              jsonData = await decryptJson(key: encryptDecryptKey, data: encryptedJson!) ??
                                   <String, dynamic>{};
                               setState(() {});
                             },
@@ -138,7 +138,7 @@ class _MyAppState extends State<MyApp> {
                           FilledButton(
                             onPressed: () async {
                               /// Encypt plain text
-                              encryptedString = await encryptSring(key: enctyptDectyptkey, data: stringData);
+                              encryptedString = await encryptSring(key: encryptDecryptKey, data: stringData);
                               setState(() {});
                             },
                             child: const Text('Encrypt Plain Text'),
@@ -148,7 +148,7 @@ class _MyAppState extends State<MyApp> {
                               if (encryptedString == null) return;
 
                               stringData =
-                                  await decryptString(key: enctyptDectyptkey, data: encryptedString!);
+                                  await decryptString(key: encryptDecryptKey, data: encryptedString!);
                               setState(() {});
                             },
                             child: const Text('Decrypt Plain Text'),
