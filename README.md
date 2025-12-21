@@ -10,12 +10,13 @@ A powerful Flutter plugin for secure encryption and decryption of API responses 
 - **Enhanced Security**: Generates different encrypted outputs for the same input, making data prediction difficult.
 - **Modern Development Stack**: Updated to latest Flutter, Dart, Android Gradle Plugin, Kotlin, and Java versions for optimal performance and compatibility.
 
-## 🚀 What's New in v2.2.0
+## 🚀 What's New in v3.0.0
 
-This release primarily focuses on SDK compatibility and performance improvements.
+This major release introduces **Full Web Support**! 🌐
 
-- **Latest SDKs**: Updated Flutter SDK to `>=3.19.0` and Dart SDK to `>=3.4.0`.
-- **iOS Platform**: Minimum iOS version updated to 13.0 in `ios/encryption_decryptions.podspec`.
+-   **Web Support**: Now supports encryption and decryption on Flutter Web using `crypto-js`.
+-   **Latest SDKs**: Updated Flutter SDK to `>=3.19.0` and Dart SDK to `>=3.4.0`.
+-   **iOS Platform**: Minimum iOS version updated to 13.0.
 
 For detailed changes and migration steps, please refer to the [Migration Guide](#migration-guide).
 
@@ -25,12 +26,12 @@ For detailed changes and migration steps, please refer to the [Migration Guide](
 | :-----: | :-: | :-: |
 | ✅      | ✅  | ✅  |
 
-## 📋 Migration Guide (v2.1.0 to v2.2.0)
+## 📋 Migration Guide (v2.1.0 to v3.0.0)
 
 **Requirements Check** 🔍
 Before upgrading, ensure your development environment meets these requirements:
 
-1.  **Java Development Kit**: Update to **Java 17** (download from [Adoptium](https://adoptium.net/))
+1.  **Java Development Kit**: Change JDK target
 2.  **Flutter SDK**: Update to **Flutter 3.19.0+** (run `flutter upgrade`)
 3.  **Dart SDK**: Update to **Dart 3.4.0+** (comes with Flutter 3.19.0+)
 4.  **Android Studio**: Update to **latest version** for optimal Kotlin DSL support
@@ -70,7 +71,7 @@ Add the plugin to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  encryption_decryptions: ^2.2.0
+  encryption_decryptions: ^3.0.0
 ```
 
 Then, run `flutter pub get`.
@@ -143,10 +144,11 @@ void main() async {
 }
 ```
 
-## 📊 Version Comparison (v2.1.0 vs v2.2.0)
+## 📊 Version Comparison (v2.1.0 vs v3.0.0)
 
-| Feature                 | v2.1.0 (Old)           | v2.2.0 (New)                 | Improvement                     |
+| Feature                 | v2.1.0 (Old)           | v3.0.0 (New)                 | Improvement                     |
 | :---------------------- | :--------------------- | :--------------------------- | :------------------------------ |
+| **Web Support**         | ❌                     | ✅ **NEW**                   | ✅ **Major Feature Added**      |
 | **Build System**        | Kotlin DSL             | Kotlin DSL                   | ✅ Continued stability           |
 | **Android Gradle Plugin** | 8.11.0                 | 8.11.0                       | ✅ Maintained latest             |
 | **Gradle**              | 8.14                   | 8.14                         | ✅ Maintained latest             |
@@ -157,9 +159,8 @@ void main() async {
 | **Flutter**             | 3.19.0+                | 3.19.0+                      | ✅ Latest stable features       |
 | **Dart**                | 3.3.0+                 | 3.4.0+                       | ✅ Latest language features     |
 | **iOS Min Version**     | Implicit (older)       | 13.0                         | ✅ Clear iOS 13.0 baseline      |
-| **Web Support**         | ✅                     | ✅                           | ✅ Maintained                    |
 | **Build Speed**         | +40% faster            | +40% faster                  | ✅ Optimizations maintained      |
-| **IDE Experience**      | Excellent              | Excellent                    | ✅ Kotlin DSL benefits          |
+
 
 ## 📝 License
 

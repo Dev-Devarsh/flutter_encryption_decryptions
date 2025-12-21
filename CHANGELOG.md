@@ -1,10 +1,12 @@
-## 2.2.0
+## 3.0.0
 
-### 🚀 Enhancements
-* **Web Support**: Added support for web with `cryptojs`.
-* **Package Version Upgrade**: Updated package version to `2.2.0`.
-* **Flutter & Dart SDK Update**: Updated Flutter SDK requirement to `>=3.19.0`.and Dart SDK requirement to `>=3.4.0`.
-*   **iOS Platform Support**: Updated `ios/encryption_decryptions.podspec` to explicitly mention iOS 13.0 as the minimum platform version.
+### 🚀 Major Release: Full Web Support
+*   **Web Support**: Added comprehensive support for Flutter Web using `crypto-js`.
+    *   Seamless encryption and decryption on web platforms.
+    *   Consistent behavior across Android, iOS, and Web.
+*   **Package Version Upgrade**: Major version bump to `3.0.0`.
+*   **Flutter & Dart SDK Update**: Updated Flutter SDK requirement to `>=3.19.0` and Dart SDK requirement to `>=3.4.0`.
+*   **iOS Platform Support**: Updated `ios/encryption_decryptions.podspec` to explicitly mention iOS 13.0 min version.
 
 ## 2.1.0
 
